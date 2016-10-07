@@ -5,21 +5,21 @@
 # Run in your cookbook directory. 
 
 function knife_package {
-echo "Desired Cookbook (Version Optional): "
-read input
-knife cookbook site download $input
-tar -zxvf *.gz
-rm *.gz 
-knife upload cookbook $input
-echo ".......FINISHED"
-echo "Install more cookbooks: Y/N?"
-read input2
+  echo "Desired Cookbook (Version Optional): "
+  read input
+  knife cookbook site download $input
+  tar -zxvf *.gz
+  rm *.gz 
+  knife upload cookbook $input
+  echo ".......FINISHED"
+  echo "Install more cookbooks: Y/N?"
+  read input2
 }
 
 knife_package
 
 until [ $input2 = "N" ] || [ $input2 = "n" ]; do
-	knife_package
+      knife_package
 done
 
 echo "DONE, GOODBYE"
